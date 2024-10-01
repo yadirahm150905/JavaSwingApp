@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// NOMBRE:YADIRA YAHAIRA HUAMAN MEZA
+
 package com.yadira.pe.db;
 
 import java.sql.Connection;
