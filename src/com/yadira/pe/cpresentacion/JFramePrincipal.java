@@ -57,6 +57,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuBar1.setName(""); // NOI18N
         jMenuBar1.setOpaque(true);
 
+        jMenu1.setBackground(new java.awt.Color(204, 255, 255));
         jMenu1.setText("aplicaciones");
         jMenu1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -72,6 +73,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(btnmenucalculadora);
 
+        btnmenucontador.setBackground(new java.awt.Color(204, 255, 255));
         btnmenucontador.setText("contador");
         btnmenucontador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +121,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmenucalculadoraActionPerformed
 
     private void btnmenucontadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenucontadorActionPerformed
-        
+    Contador con = new Contador();
+        con.setSize(700,900);
+        con.setLocation(0,0);
+        Principal.removeAll();
+        Principal.add(con,BorderLayout.CENTER);
+        Principal.revalidate();
+        Principal.repaint();        
     }//GEN-LAST:event_btnmenucontadorActionPerformed
 
     /**
