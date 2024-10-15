@@ -1,44 +1,69 @@
 
 package com.yadira.pe.cmodelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TipoDocumento {
+    private int ID_TIPO_DOCUMENTO ;
+    private String nombre;
+    private String siglas;
+    private String nacionalidad;
+    private String estado;
+    private Date fecha;
 
-    private int id_categoria;
-    private String nombre_categoria;
-    private String descripcion_categoria;
+        public int getID_TIPO_DOCUMENTO() {
+            return ID_TIPO_DOCUMENTO;
+        }
 
-    // Constructor
-    public TipoDocumento(int id_categoria, String nombre_categoria, String descripcion_categoria) {
-        this.id_categoria = id_categoria;
-        this.nombre_categoria = nombre_categoria;
-        this.descripcion_categoria = descripcion_categoria;
+        public void setID_TIPO_DOCUMENTO(int id_documento_identidad) {
+            this.ID_TIPO_DOCUMENTO = ID_TIPO_DOCUMENTO;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getSiglas() {
+            return siglas;
+        }
+
+        public void setSiglas(String siglas) {
+            this.siglas = siglas;
+        }
+
+        public String getNacionalidad() {
+            return nacionalidad;
+        }
+
+        public void setNacionalidad(String nacionalidad) {
+            this.nacionalidad = nacionalidad;
+        }
+
+        public String getEstado() {
+            return estado;
+        }
+
+        public void setEstado(String estado) {
+            this.estado = estado;
+        }
+//Date forma 
+    public String getFecha() {
+        
+        SimpleDateFormat dateformat  = new SimpleDateFormat("dd-MM-yyyy");
+        return dateformat.format(fecha) ;
     }
 
-    // Getters y Setters
-    public int getId_categoria() {
-        return id_categoria;
+    public void setFecha(String fecha)throws ParseException {
+        
+        SimpleDateFormat dateFormat  = new SimpleDateFormat("dd-MM-yyyy");
+        this.fecha = dateFormat.parse(fecha);
     }
-
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
-    }
-
-    public String getNombre_categoria() {
-        return nombre_categoria;
-    }
-
-    public void setNombre_categoria(String nombre_categoria) {
-        this.nombre_categoria = nombre_categoria;
-    }
-
-    public String getDescripcion_categoria() {
-        return descripcion_categoria;
-    }
-
-    public void setDescripcion_categoria(String descripcion_categoria) {
-        this.descripcion_categoria = descripcion_categoria;
-    }
+        
+   
 }
-
-    
-

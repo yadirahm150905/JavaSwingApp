@@ -5,9 +5,13 @@
         <group>
             <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cpresentacion/Contador.java</file>
             <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cpresentacion/JFrameLogin.java</file>
+            <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cmodelo/TipoDocumento.java</file>
+            <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/test/Test.java</file>
+            <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cdatosdao/TipoDocumentoDao.java</file>
             <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cpresentacion/Calculadora.java</file>
             <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/db/Conexion.java</file>
             <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cpresentacion/JFramePrincipal.java</file>
+            <file>file:/C:/JAVA_YYHM/JavaSwingApp/src/com/yadira/pe/cnegocio/TipoDocumentoBO.java</file>
         </group>
     </open-files>
 </project-private>
