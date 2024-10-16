@@ -17,7 +17,7 @@ public class TipoDocumento {
             return ID_TIPO_DOCUMENTO;
         }
 
-        public void setID_TIPO_DOCUMENTO(int id_documento_identidad) {
+        public void setID_TIPO_DOCUMENTO(int ID_TIPO_DOCUMENTO) {
             this.ID_TIPO_DOCUMENTO = ID_TIPO_DOCUMENTO;
         }
 

@@ -16,7 +16,10 @@ import javax.swing.JOptionPane;
 
 public class JPTipoDocumento extends javax.swing.JPanel {
     private TipoDocumentoBO tdbo; // Asegúrate de inicializar esto
+    TipoDocumento td = new TipoDocumento();
+    String idTipoDocumento;
 
+    
     public JPTipoDocumento() {
         initComponents();
         tdbo = new TipoDocumentoBO(); // Inicializa la instancia de TipoDocumentoBO
@@ -73,10 +76,20 @@ public class JPTipoDocumento extends javax.swing.JPanel {
 
             }
         ));
+        TablaTipoDocumento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaTipoDocumentoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaTipoDocumento);
 
         btnEliminar.setBackground(new java.awt.Color(255, 207, 118));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(204, 238, 206));
         btnModificar.setText("modificar");
@@ -169,9 +182,9 @@ public class JPTipoDocumento extends javax.swing.JPanel {
                         .addGap(260, 260, 260)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
+                                .addGap(97, 97, 97)
                                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)
+                                .addGap(100, 100, 100)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(121, Short.MAX_VALUE))
@@ -222,14 +235,16 @@ public class JPTipoDocumento extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnGuardar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLimpiar)
+                        .addComponent(btnGuardar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -258,40 +273,96 @@ public class JPTipoDocumento extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         try {
-            TipoDocumento td = new TipoDocumento();
-
             td.setNombre(textNombre.getText());
             td.setSiglas(textSiglas.getText());
             td.setNacionalidad(textNacionalidad.getText());
             td.setEstado(textEstado.getText());
             td.setFecha(textFecha.getText());
-
-            TipoDocumentoBO tdbo = new TipoDocumentoBO();
-
-            String mensaje = tdbo.agregarTipoDocumento(td);
-
-            JOptionPane.showMessageDialog(this, mensaje);
-
-            textNombre.setText("");
-            textSiglas.setText("");
-            textNacionalidad.setText("");
-            textEstado.setText("");
-            textFecha.setText("");
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this, "Error con la fecha: " + e.getMessage());
+            String smg = tdbo.agregarTipoDocumento(td);
+            listarTipoDocumento();
+            JOptionPane.showMessageDialog(null, ":) se guardo corectamente" + smg);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: al guardar Tipo documento ");
+        
+}//GEN-LAST:event_btnGuardarActionPerformed       
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
-}
+  public boolean valida(){
+    if (textNombre.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, ":) NOMBRE ES REQUERIDO");
+        return false;
+    } else if (textSiglas.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, ":) SIGLAS ES REQUERIDO");
+        return false;
+    } else if (textNacionalidad.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, ":) NACIONALIDAD ES REQUERIDO");
+        return false;
+    } else if (textEstado.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, ":) ESTADO ES REQUERIDO");
+        return false;
+    } else if (textFecha.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, ":) FECHA ES REQUERIDO");
+        return false;
+    }
+
+    // If all validations pass
+    return true;
+
+
+}       
+  
     private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textNombreActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-           
+      try {
+     
+            td.setID_TIPO_DOCUMENTO(Integer.parseInt(idTipoDocumento));
+            td.setNombre(textNombre.getText());
+            td.setSiglas(textSiglas.getText());
+            td.setNacionalidad(textNacionalidad.getText());
+            td.setEstado(textEstado.getText());
+            td.setFecha(textFecha.getText());
+            tdbo.modificartipodocumento(td);
+            listarTipoDocumento();
+            JOptionPane.showMessageDialog(null, ":) se altualizo corectamente");
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: al altualizar Tipo documento ");
+                    
+}       
         
     }//GEN-LAST:event_btnModificarActionPerformed
+    
+    private void TablaTipoDocumentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaTipoDocumentoMouseClicked
+        
+        int  seleccion  = TablaTipoDocumento.rowAtPoint(evt.getPoint());
+        
+        idTipoDocumento = TablaTipoDocumento.getValueAt(seleccion, 0)+ "" ;
+        textNombre.setText(TablaTipoDocumento.getValueAt(seleccion, 1)+ "");
+        textSiglas.setText(TablaTipoDocumento.getValueAt(seleccion, 2)+ "");
+        textNacionalidad.setText(TablaTipoDocumento.getValueAt(seleccion, 3)+ "");
+        textEstado.setText(TablaTipoDocumento.getValueAt(seleccion, 4)+ "");
+        textFecha.setText(TablaTipoDocumento.getValueAt(seleccion, 5)+ "");
+        
+        System.out.println(idTipoDocumento);
+        
+    }//GEN-LAST:event_TablaTipoDocumentoMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+           try {
+//            TipoDocumento tdf = new TipoDocumento();
+            td.setID_TIPO_DOCUMENTO(Integer.parseInt(idTipoDocumento));
+            tdbo.eliminarTipoDocumento(td);
+            listarTipoDocumento();
+        } catch (Exception diego) {
+            JOptionPane.showMessageDialog(null, "Error" + diego.getMessage());
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables

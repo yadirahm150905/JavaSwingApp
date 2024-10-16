@@ -28,7 +28,7 @@ public class Test {
     
     TipoDocumento td2 = new TipoDocumento();
     td2.setID_TIPO_DOCUMENTO(2);
-    td2.setNombre("Pasaporte");
+    td2.setNombre("Pasaportea");
     td2.setEstado("1");
     td2.setSiglas("PAS");
     td2.setNacionalidad("peruana");
@@ -55,11 +55,12 @@ public class Test {
 */
     }
     public void eliminar () throws SQLException, ParseException{ 
-    td.setID_TIPO_DOCUMENTO(1);    }
+    td.setID_TIPO_DOCUMENTO(2);   
+    }
     
     public void modificar () throws SQLException, ParseException{ 
     td.setID_TIPO_DOCUMENTO(2); // ID del documento que quieres modificar
-    td.setNombre(" YADIRA");
+    td.setNombre(" Y");
     td.setEstado("0");
     td.setSiglas(" Mc");
     td.setNacionalidad("peruana mod");
@@ -74,16 +75,16 @@ public class Test {
         
         // Listar los tipos de documento en el JTable
         tdbo.listarTipoDocumento(table);
-
+ 
 
     }
     
     
     public static void main(String[] args) throws SQLException, ParseException {
         Test t = new Test();
-       t.insertar(); 
+      t.insertar(); 
         //t.eliminar();
-       // t.modificar ();
+       //t.modificar ();
           // t.listar();
     }
 

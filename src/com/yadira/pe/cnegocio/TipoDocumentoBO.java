@@ -24,7 +24,7 @@ public class TipoDocumentoBO {
         }
         return mensaje;
     }
-
+/*metodo eliminar*/
     public String eliminarTipoDocumento(TipoDocumento tipoDocumento) throws SQLException {
         Connection c = Conexion.getConnection();
         try {
