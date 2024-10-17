@@ -6,6 +6,7 @@ import com.yadira.pe.db.Conexion;
 import javax.swing.JTable;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TipoDocumentoBO {
     private String mensaje;
@@ -64,4 +65,20 @@ public class TipoDocumentoBO {
             System.out.println("Error: " + e.getMessage());
         } 
     }
+  ////  listarTipoDocumentoCombo
+    public ArrayList<TipoDocumento> listarTipoDocumentoCombo(){
+      ArrayList<TipoDocumento> listarTipoDocumento = new ArrayList <>();
+      Connection c = Conexion.getConnection();
+      listarTipoDocumento = tdd.listarTipoDocumentoCombo(c);
+      
+      try{
+          c.close();
+      } catch (Exception e) {
+          System.out.println("ERROR: " + e.getMessage());
+      }
+     return listarTipoDocumento;
+    
+          
+    }
 }
+//

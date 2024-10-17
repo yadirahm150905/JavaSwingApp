@@ -4,6 +4,9 @@
  */
 package com.yadira.pe.cpresentacion;
 
+import com.yadira.pe.cmodelo.TipoDocumento;
+import com.yadira.pe.cnegocio.TipoDocumentoBO;
+
 /**
  *
  * @author Alumno-PB203
@@ -15,8 +18,21 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
      */
     public JPpersonaDocumento() {
         initComponents();
+        listarTipoDocumentoCombo();
     }
 
+    private void listarTipoDocumentoCombo(){
+        TipoDocumentoBO tdbo = new TipoDocumentoBO();
+        
+        for(TipoDocumento item  : tdbo.listarTipoDocumentoCombo()){
+            
+            
+        cjTipoDocumento.addItem(item.getNombre());
+        cjTipoDocumento.addItem(item.getID_TIPO_DOCUMENTO()+"" + item.getID_TIPO_DOCUMENTO());
+
+        }
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +42,9 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnEliminar2 = new javax.swing.JButton();
@@ -36,43 +55,49 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cjTipoDocumento = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         textNombre1 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         textNombre2 = new javax.swing.JTextField();
-        textNombre3 = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 242));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Handwriting", 0, 48)); // NOI18N
         jLabel1.setText("Registro Persona Documento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 820, 100));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 820, 100));
 
+        btnEliminar2.setBackground(new java.awt.Color(255, 207, 118));
         btnEliminar2.setText("Eliminar");
         btnEliminar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, 130, 60));
+        jPanel1.add(btnEliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 90, 40));
 
+        btnGuardar2.setBackground(new java.awt.Color(204, 238, 206));
         btnGuardar2.setText("Guardar");
         btnGuardar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 130, 60));
+        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 90, 40));
 
         jLabel3.setText("Persona:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         textNombre.setBackground(new java.awt.Color(255, 255, 242));
         textNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -82,29 +107,30 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
                 textNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 400, -1));
+        jPanel1.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 400, -1));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 400, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 400, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cjTipoDocumento.setBackground(new java.awt.Color(255, 255, 204));
+        cjTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cjTipoDocumento.setBorder(null);
+        cjTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cjTipoDocumentoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+        jPanel1.add(cjTipoDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 190, -1));
 
         jLabel4.setText("Persona:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
 
         jLabel5.setText("Tipo Documento:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         jLabel9.setText("Persona:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         textNombre1.setBackground(new java.awt.Color(255, 255, 242));
         textNombre1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -114,11 +140,10 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
                 textNombre1ActionPerformed(evt);
             }
         });
-        jPanel1.add(textNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 400, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 400, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 400, 10));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 400, 10));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 227, 400, -1));
+        jPanel1.add(textNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 400, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 400, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 400, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 400, 10));
 
         textNombre2.setBackground(new java.awt.Color(255, 255, 242));
         textNombre2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -128,17 +153,7 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
                 textNombre2ActionPerformed(evt);
             }
         });
-        jPanel1.add(textNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 400, -1));
-
-        textNombre3.setBackground(new java.awt.Color(255, 255, 242));
-        textNombre3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textNombre3.setBorder(null);
-        textNombre3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textNombre3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 400, -1));
+        jPanel1.add(textNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -152,10 +167,6 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombre3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textNombre3ActionPerformed
-
     private void textNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombre2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textNombre2ActionPerformed
@@ -164,9 +175,9 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textNombre1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cjTipoDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cjTipoDocumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cjTipoDocumentoActionPerformed
 
     private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
         // TODO add your handling code here:
@@ -174,6 +185,13 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
 
     private void btnGuardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar2ActionPerformed
         // TODO add your handling code here:
+      String tdSeleccionado = (String)cjTipoDocumento.getSelectedItem();
+      String id = tdSeleccionado.split("")[0];
+      
+     //  System.out.println("id Tipo Documento seleccionado: " + tdSeleccionado);
+       System.out.println("id: " + id);
+       
+        
     }//GEN-LAST:event_btnGuardar2ActionPerformed
 
     private void btnEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar2ActionPerformed
@@ -184,12 +202,15 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar2;
     private javax.swing.JButton btnGuardar2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cjTipoDocumento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -197,11 +218,9 @@ public class JPpersonaDocumento extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField textNombre;
     private javax.swing.JTextField textNombre1;
     private javax.swing.JTextField textNombre2;
-    private javax.swing.JTextField textNombre3;
     // End of variables declaration//GEN-END:variables
 }

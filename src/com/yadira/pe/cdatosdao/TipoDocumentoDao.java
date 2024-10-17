@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class TipoDocumentoDao {
@@ -128,6 +129,68 @@ public String modificarTipoDocumento(Connection conn, TipoDocumento tipoDocument
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
             System.out.println(e.getMessage());
-        }
+        
+    
+//////////////////////////////
     }
+    
 }
+  public ArrayList<TipoDocumento> listarTipoDocumentoCombo(Connection conn) {
+    ArrayList<TipoDocumento> listarTipoDocumento = new ArrayList<>();
+    
+    Statement statement = null;
+    ResultSet resultSet = null;
+    
+    String sql = "SELECT ID_TIPO_DOCUMENTO, NOMBRE FROM TIPO_DOCUMENTO"; // Correct SQL for fetching data
+    try {
+        statement = conn.createStatement();
+        resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            TipoDocumento td = new TipoDocumento();
+            td.setID_TIPO_DOCUMENTO(resultSet.getInt("ID_TIPO_DOCUMENTO"));
+            td.setNombre(resultSet.getString("NOMBRE"));
+            listarTipoDocumento.add(td);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        System.out.println(e.getMessage());
+}
+    
+    return listarTipoDocumento;
+}
+      
+      
+        
+}              
+        
+ /*     
+        
+        
+        
+    public ArrayList<TipoDocumento> listarTipoDocumentoCombo(Connection conn, TipoDocumento tipoDocumento);
+    ArrayList<TipoDocumento> listarTipoDocumento = new ArrayList <> ();
+
+    Statement statement  = null;
+    ResultSet resultSet = null;
+           
+   
+    String sql = "SELECT  ID_TIPO_DOCUMENTO ,nombre from TipoDocumento)";
+    try {
+    
+    
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                TipoDocumento td = new TipoDocumento();
+                td.setID_TIPO_DOCUMENTO(resultSet.getInt("ID_TIPO_DOCUMENTO"));
+                td.setNombre(resultSet.getString("NOMBRE"));
+                listarTipoDocumento.add(td);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
+     System.out.println(e.getMessage());
+
+}
+        return  listarTipoDocumento;
+}
+*/
