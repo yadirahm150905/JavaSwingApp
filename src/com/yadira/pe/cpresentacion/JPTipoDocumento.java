@@ -3,11 +3,8 @@ package com.yadira.pe.cpresentacion;
 import com.yadira.pe.cmodelo.TipoDocumento;
 import com.yadira.pe.cnegocio.TipoDocumentoBO;
 import java.text.ParseException;
-
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,10 +26,6 @@ public class JPTipoDocumento extends javax.swing.JPanel {
     public void listarTipoDocumento() {
         tdbo.listarTipoDocumento(TablaTipoDocumento);
     }
-    
- 
-
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -158,9 +151,9 @@ public class JPTipoDocumento extends javax.swing.JPanel {
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(27, 27, 27)
                         .addComponent(btnLimpiar)
-                        .addGap(18, 18, 18)
+                        .addGap(173, 173, 173)
                         .addComponent(btnGuardar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +232,7 @@ public class JPTipoDocumento extends javax.swing.JPanel {
                     .addComponent(btnGuardar)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -258,11 +251,13 @@ public class JPTipoDocumento extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         initComponents();
+        
         textNombre.setText("");
         textSiglas.setText("");
         textNacionalidad.setText("");
         textEstado.setText("");
         textFecha.setText("");
+        
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -351,8 +346,8 @@ public class JPTipoDocumento extends javax.swing.JPanel {
             td.setID_TIPO_DOCUMENTO(Integer.parseInt(idTipoDocumento));
             tdbo.eliminarTipoDocumento(td);
             listarTipoDocumento();
-        } catch (Exception diego) {
-            JOptionPane.showMessageDialog(null, "Error" + diego.getMessage());
+        } catch (Exception yadira) {
+            JOptionPane.showMessageDialog(null, "Error" + yadira.getMessage());
         
     }                                           
 

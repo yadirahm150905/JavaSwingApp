@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 
 public class Conexion {
       private static Connection con = null;
-      private static String  usuario = "INSTRUMENTO";
+      private static String  usuario = "NuevoPeruBank";
       private static String clave = "123456";
       private static String url ="jdbc:oracle:thin:@localhost:1521:xe";
 
